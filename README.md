@@ -1,6 +1,6 @@
-# Equivariance Everywhere All At Once:A Recipe for Graph Foundation Models
+# Equivariance Everywhere All At Once: A Recipe for Graph Foundation Models
 
-[PyG]: https://pytorch-geometric.readthedocs.io/en/latest/
+This repository contains the official code base of the paper **[Equivariance Everywhere All At Once: A Recipe for Graph Foundation Models](https://arxiv.org/abs/2506.14291)**
 
 ## Installation ##
 To reproduce the results please use Python 3.10, PyTorch version 2.3.0, Cuda 11.8, PyG version 2.5.3.
@@ -55,3 +55,15 @@ python -u main.py --is_train --train_test_setup inc_trainset --train_size 9 --gn
 ```
 
 Note that to test this models you run the same command, this time without the is_train flag.
+
+## Cite
+
+If you make use of this code, or its accompanying [paper](https://arxiv.org/abs/2506.14291), please cite this work as follows:
+```bibtex
+@misc{finkelshtein2025equivarianceeverywhere,
+      title={Equivariance Everywhere All At Once: A Recipe for Graph Foundation Models}, 
+      author={Ben Finkelshtein and İsmail İlkan Ceylan and Michael Bronstein and Ron Levie},
+      year={2025},
+      archivePrefix={arXiv},
+}
+```
