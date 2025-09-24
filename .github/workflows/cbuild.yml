@@ -3,12 +3,12 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - Dockerfile
+      - container/Dockerfile
       - .github/workflows/cbuild.yml # Self-trigger
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ArslanArdavic/equivarianceeverywhere
+  IMAGE_NAME: arslanardavic/equivarianceeverywhere
   VERSION: latest
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
-          context: containers/cuda-python3
+          context: container/
           build-args: |
             VERSION=${{ env.VERSION }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
