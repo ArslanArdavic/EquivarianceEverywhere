@@ -3,12 +3,12 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - Dockerfile
+      - container/Dockerfile
       - .github/workflows/cbuild.yml # Self-trigger
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ArslanArdavic/equivarianceeverywhere
+  IMAGE_NAME: arslanardavic/equivarianceeverywhere
   VERSION: latest
 
 jobs:
