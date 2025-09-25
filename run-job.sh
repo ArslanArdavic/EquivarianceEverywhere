@@ -19,6 +19,7 @@ python -m pip install --no-cache-dir ogb
 
 # Run your training
 python -u main.py \
+  --project ALLab-Boun/EquivarianceEverywhere-Reproduction\
   --is_train \
   --train_test_setup trainset1 \
   --gnn_type MEAN_GNN \
