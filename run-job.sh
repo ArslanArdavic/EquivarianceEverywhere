@@ -14,6 +14,9 @@ set -euo pipefail
 mkdir -p logs
 cd "${SLURM_SUBMIT_DIR:-$PWD}"
 
+# Packages missed in the container can be installed here
+python -m pip install --no-cache-dir ogb 
+
 # Run your training
 python -u main.py \
   --is_train \
