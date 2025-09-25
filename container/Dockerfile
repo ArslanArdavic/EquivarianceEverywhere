@@ -1,37 +1,38 @@
-# Local Usage:
-# ```
-# docker build -t ghcr.io/bouncmpe/cuda-python3 containers/cuda-python3/
-# docker run -it --rm --gpus=all ghcr.io/bouncmpe/cuda-python3
-# ```
+# Step 1: Base image (CUDA 11.8, Ubuntu 22.04)
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
-FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+# Step 2: Minimal OS deps + env
+ENV DEBIAN_FRONTEND=noninteractive \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PYTHONDONTWRITEBYTECODE=1
 
-LABEL maintainer="Arda Arslan"
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip python3-venv python-is-python3 \
+    python3-dev build-essential \
+    git curl ca-certificates && \
+    update-ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
 
-ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+# Step 3: PyTorch 2.3.0 (CUDA 11.8)
+RUN python -m pip install --upgrade pip && \
+    pip install "torch==2.3.0" torchvision torchaudio \
+        --index-url https://download.pytorch.org/whl/cu118
 
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends \
-        git \
-        wget \
-        cmake \
-        ninja-build \
-        build-essential \
-        python3 \
-        python3-dev \
-        python3-pip \
-        python3-venv \
-        python-is-python3 \
-    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* 
+# Step 4: PyG compiled extensions for torch 2.3 + cu118
+RUN pip install \
+    torch_scatter \
+    torch_sparse \
+    torch_cluster \
+    torch_spline_conv \
+    -f https://data.pyg.org/whl/torch-2.3.0+cu118.html
 
-RUN python3 -m pip install --upgrade pip && \
-    python3 -m venv /opt/python3/venv/base
+# Step 5: Easy packages via requirements.txt
+WORKDIR /app
+COPY requirements.txt /app/requirements.txt
+RUN pip install -r /app/requirements.txt
 
-COPY requirements.txt /opt/python3/venv/base/
-RUN /opt/python3/venv/base/bin/python3 -m pip install --no-cache-dir -r /opt/python3/venv/base/requirements.txt
-
+# Option A: Minimal pass-through entrypoint
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-
-# Set entrypoint to bash
 ENTRYPOINT ["/entrypoint.sh"]
