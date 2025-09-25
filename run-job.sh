@@ -23,7 +23,6 @@ python -u main.py \
   --is_train \
   --train_test_setup trainset1 \
   --gnn_type MEAN_GNN \
-  --hidden_dim 16 \
   --num_layers 2 \
   --lp_ratio 0.4 \
   --max_epochs 2000 \
