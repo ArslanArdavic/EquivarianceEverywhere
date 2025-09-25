@@ -14,6 +14,16 @@ set -euo pipefail
 mkdir -p logs
 cd "${SLURM_SUBMIT_DIR:-$PWD}"
 
+# Use node-local scratch if available, otherwise /tmp
+SCRATCH="${SLURM_TMPDIR:-/tmp}"
+
+# Put all JIT/caches on exec-capable scratch
+export TRITON_CACHE_DIR="$SCRATCH/triton_cache"
+export TORCHINDUCTOR_CACHE_DIR="$SCRATCH/torchinductor"
+export XDG_CACHE_HOME="$SCRATCH/xdg_cache"
+mkdir -p "$TRITON_CACHE_DIR" "$TORCHINDUCTOR_CACHE_DIR" "$XDG_CACHE_HOME"
+chmod 700 "$TRITON_CACHE_DIR" "$TORCHINDUCTOR_CACHE_DIR" "$XDG_CACHE_HOME"
+
 # Packages missed in the container can be installed here
 python -m pip install --no-cache-dir ogb 
 
