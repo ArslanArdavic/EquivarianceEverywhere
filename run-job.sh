@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=tsgnn-train
+#SBATCH --job-name=tsgnn-test
 #SBATCH --output=logs/tsgnn-test_%j.out
 #SBATCH --error=logs/tsgnn-test_%j.err
 #SBATCH --time=24:00:00
