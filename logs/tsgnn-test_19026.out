@@ -1,0 +1,244 @@
+Collecting ogb
+  Downloading ogb-1.3.6-py3-none-any.whl.metadata (6.2 kB)
+Requirement already satisfied: torch>=1.6.0 in /usr/local/lib/python3.10/dist-packages (from ogb) (2.3.0+cu118)
+Requirement already satisfied: numpy>=1.16.0 in /usr/local/lib/python3.10/dist-packages (from ogb) (1.25.1)
+Requirement already satisfied: tqdm>=4.29.0 in /usr/local/lib/python3.10/dist-packages (from ogb) (4.67.1)
+Requirement already satisfied: scikit-learn>=0.20.0 in /usr/local/lib/python3.10/dist-packages (from ogb) (1.3.2)
+Requirement already satisfied: pandas>=0.24.0 in /usr/local/lib/python3.10/dist-packages (from ogb) (2.0.3)
+Requirement already satisfied: six>=1.12.0 in /usr/local/lib/python3.10/dist-packages (from ogb) (1.17.0)
+Requirement already satisfied: urllib3>=1.24.0 in /usr/local/lib/python3.10/dist-packages (from ogb) (2.5.0)
+Collecting outdated>=0.2.0 (from ogb)
+  Downloading outdated-0.2.2-py2.py3-none-any.whl.metadata (4.7 kB)
+Requirement already satisfied: setuptools>=44 in /usr/lib/python3/dist-packages (from outdated>=0.2.0->ogb) (59.6.0)
+Collecting littleutils (from outdated>=0.2.0->ogb)
+  Downloading littleutils-0.2.4-py3-none-any.whl.metadata (679 bytes)
+Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (from outdated>=0.2.0->ogb) (2.32.5)
+Requirement already satisfied: python-dateutil>=2.8.2 in /usr/local/lib/python3.10/dist-packages (from pandas>=0.24.0->ogb) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas>=0.24.0->ogb) (2025.2)
+Requirement already satisfied: tzdata>=2022.1 in /usr/local/lib/python3.10/dist-packages (from pandas>=0.24.0->ogb) (2025.2)
+Requirement already satisfied: scipy>=1.5.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn>=0.20.0->ogb) (1.15.3)
+Requirement already satisfied: joblib>=1.1.1 in /usr/local/lib/python3.10/dist-packages (from scikit-learn>=0.20.0->ogb) (1.5.2)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn>=0.20.0->ogb) (3.6.0)
+Requirement already satisfied: filelock in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (3.13.1)
+Requirement already satisfied: typing-extensions>=4.8.0 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (4.12.2)
+Requirement already satisfied: sympy in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (1.13.3)
+Requirement already satisfied: networkx in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (3.3)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (3.1.4)
+Requirement already satisfied: fsspec in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (2024.6.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu11==11.8.89 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (11.8.89)
+Requirement already satisfied: nvidia-cuda-runtime-cu11==11.8.89 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (11.8.89)
+Requirement already satisfied: nvidia-cuda-cupti-cu11==11.8.87 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (11.8.87)
+Requirement already satisfied: nvidia-cudnn-cu11==8.7.0.84 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (8.7.0.84)
+Requirement already satisfied: nvidia-cublas-cu11==11.11.3.6 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (11.11.3.6)
+Requirement already satisfied: nvidia-cufft-cu11==10.9.0.58 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (10.9.0.58)
+Requirement already satisfied: nvidia-curand-cu11==10.3.0.86 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (10.3.0.86)
+Requirement already satisfied: nvidia-cusolver-cu11==11.4.1.48 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (11.4.1.48)
+Requirement already satisfied: nvidia-cusparse-cu11==11.7.5.86 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (11.7.5.86)
+Requirement already satisfied: nvidia-nccl-cu11==2.20.5 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (2.20.5)
+Requirement already satisfied: nvidia-nvtx-cu11==11.8.86 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (11.8.86)
+Requirement already satisfied: triton==2.3.0 in /usr/local/lib/python3.10/dist-packages (from torch>=1.6.0->ogb) (2.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2->torch>=1.6.0->ogb) (2.1.5)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/lib/python3.10/dist-packages (from requests->outdated>=0.2.0->ogb) (3.4.3)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.10/dist-packages (from requests->outdated>=0.2.0->ogb) (3.10)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests->outdated>=0.2.0->ogb) (2025.8.3)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/lib/python3.10/dist-packages (from sympy->torch>=1.6.0->ogb) (1.3.0)
+Downloading ogb-1.3.6-py3-none-any.whl (78 kB)
+Downloading outdated-0.2.2-py2.py3-none-any.whl (7.5 kB)
+Downloading littleutils-0.2.4-py3-none-any.whl (8.1 kB)
+Installing collected packages: littleutils, outdated, ogb
+
+Successfully installed littleutils-0.2.4 ogb-1.3.6 outdated-0.2.2
+[neptune] [info   ] Neptune initialized. Open in the app: https://app.neptune.ai/ALLab-Boun/EquivarianceEverywhere-Reproduction/e/EQ-3
+project: ALLab-Boun/EquivarianceEverywhere-Reproduction
+is_train: False
+train_test_setup: TrainTestSetup.trainset1
+train_size: 1
+gnn_type: GNNType.MEAN_GNN
+hid_channel: 16
+num_layers: 2
+ls_num_layers: -1
+lp_ratio: 0.4
+max_epochs: 2000
+checkpoints: [100, 300, 500, 1000, 2000]
+lr: 0.01
+gpu: None
+seedFINAL Results/trainset1/roman_empire/0/val_loss=7.08,test_loss=7.02,val_metric=0.1,test_metric=0.1
+seedFINAL Results/trainset1/roman_empire/1/val_loss=5.58,test_loss=5.59,val_metric=0.1,test_metric=0.09
+seedFINAL Results/trainset1/roman_empire/2/val_loss=6.43,test_loss=6.39,val_metric=0.09,test_metric=0.09
+seedFINAL Results/trainset1/roman_empire/3/val_loss=6.88,test_loss=6.89,val_metric=0.1,test_metric=0.09
+seedFINAL Results/trainset1/roman_empire/4/val_loss=5.99,test_loss=5.95,val_metric=0.1,test_metric=0.1
+Results/trainset1/roman_empire/ train=9.68+-0.18,val=9.55+-0.16
+
+seedFINAL Results/trainset1/amazon_ratings/0/val_loss=9.86,test_loss=9.8,val_metric=0.4,test_metric=0.4
+seedFINAL Results/trainset1/amazon_ratings/1/val_loss=8.47,test_loss=8.38,val_metric=0.41,test_metric=0.41
+seedFINAL Results/trainset1/amazon_ratings/2/val_loss=8.22,test_loss=8.16,val_metric=0.4,test_metric=0.41
+seedFINAL Results/trainset1/amazon_ratings/3/val_loss=8.48,test_loss=8.4,val_metric=0.4,test_metric=0.4
+seedFINAL Results/trainset1/amazon_ratings/4/val_loss=8.79,test_loss=8.73,val_metric=0.4,test_metric=0.4
+Results/trainset1/amazon_ratings/ train=40.14+-0.55,val=40.41+-0.35
+
+seedFINAL Results/trainset1/minesweeper/0/val_loss=14.77,test_loss=14.69,val_metric=0.8,test_metric=0.8
+seedFINAL Results/trainset1/minesweeper/1/val_loss=12.51,test_loss=12.51,val_metric=0.8,test_metric=0.8
+seedFINAL Results/trainset1/minesweeper/2/val_loss=12.2,test_loss=12.15,val_metric=0.8,test_metric=0.8
+seedFINAL Results/trainset1/minesweeper/3/val_loss=12.41,test_loss=12.43,val_metric=0.8,test_metric=0.8
+seedFINAL Results/trainset1/minesweeper/4/val_loss=12.99,test_loss=12.94,val_metric=0.8,test_metric=0.8
+Results/trainset1/minesweeper/ train=79.98+-0.02,val=79.98+-0.02
+
+seedFINAL Results/trainset1/tolokers/0/val_loss=17.72,test_loss=17.81,val_metric=0.78,test_metric=0.78
+seedFINAL Results/trainset1/tolokers/1/val_loss=14.64,test_loss=14.72,val_metric=0.78,test_metric=0.78
+seedFINAL Results/trainset1/tolokers/2/val_loss=15.05,test_loss=15.13,val_metric=0.78,test_metric=0.78
+seedFINAL Results/trainset1/tolokers/3/val_loss=15.18,test_loss=15.25,val_metric=0.78,test_metric=0.78
+seedFINAL Results/trainset1/tolokers/4/val_loss=15.29,test_loss=15.37,val_metric=0.78,test_metric=0.78
+Results/trainset1/tolokers/ train=78.17+-0.03,val=78.16+-0.02
+
+seedFINAL Results/trainset1/questions/0/val_loss=3.1,test_loss=3.02,val_metric=0.96,test_metric=0.96
+seedFINAL Results/trainset1/questions/1/val_loss=2.62,test_loss=2.62,val_metric=0.96,test_metric=0.96
+seedFINAL Results/trainset1/questions/2/val_loss=2.65,test_loss=2.59,val_metric=0.96,test_metric=0.96
+seedFINAL Results/trainset1/questions/3/val_loss=2.67,test_loss=2.67,val_metric=0.96,test_metric=0.96
+seedFINAL Results/trainset1/questions/4/val_loss=2.78,test_loss=2.72,val_metric=0.96,test_metric=0.96
+Results/trainset1/questions/ train=96.26+-0.36,val=96.19+-0.29
+
+seedFINAL Results/trainset1/pubmed/0/val_loss=1.58,test_loss=1.75,val_metric=0.47,test_metric=0.42
+seedFINAL Results/trainset1/pubmed/1/val_loss=1.48,test_loss=1.62,val_metric=0.46,test_metric=0.45
+seedFINAL Results/trainset1/pubmed/2/val_loss=1.54,test_loss=1.69,val_metric=0.46,test_metric=0.45
+seedFINAL Results/trainset1/pubmed/3/val_loss=1.47,test_loss=1.62,val_metric=0.46,test_metric=0.46
+seedFINAL Results/trainset1/pubmed/4/val_loss=1.42,test_loss=1.56,val_metric=0.46,test_metric=0.46
+Results/trainset1/pubmed/ train=46.04+-0.55,val=44.92+-1.44
+
+seedFINAL Results/trainset1/citeseer/0/val_loss=1.68,test_loss=1.75,val_metric=0.37,test_metric=0.36
+seedFINAL Results/trainset1/citeseer/1/val_loss=1.68,test_loss=1.74,val_metric=0.38,test_metric=0.38
+seedFINAL Results/trainset1/citeseer/2/val_loss=1.68,test_loss=1.75,val_metric=0.39,test_metric=0.38
+seedFINAL Results/trainset1/citeseer/3/val_loss=1.68,test_loss=1.75,val_metric=0.38,test_metric=0.38
+seedFINAL Results/trainset1/citeseer/4/val_loss=1.66,test_loss=1.73,val_metric=0.38,test_metric=0.37
+Results/trainset1/citeseer/ train=38.0+-0.73,val=37.38+-0.81
+
+seedFINAL Results/trainset1/chameleon/0/val_loss=4.44,test_loss=4.31,val_metric=0.46,test_metric=0.45
+seedFINAL Results/trainset1/chameleon/1/val_loss=4.02,test_loss=3.61,val_metric=0.42,test_metric=0.41
+seedFINAL Results/trainset1/chameleon/2/val_loss=4.07,test_loss=3.95,val_metric=0.47,test_metric=0.45
+seedFINAL Results/trainset1/chameleon/3/val_loss=3.88,test_loss=3.48,val_metric=0.42,test_metric=0.39
+seedFINAL Results/trainset1/chameleon/4/val_loss=4.36,test_loss=4.27,val_metric=0.43,test_metric=0.41
+Results/trainset1/chameleon/ train=43.76+-2.26,val=42.37+-2.56
+
+seedFINAL Results/trainset1/squirrel/0/val_loss=7.16,test_loss=6.88,val_metric=0.26,test_metric=0.28
+seedFINAL Results/trainset1/squirrel/1/val_loss=6.71,test_loss=6.92,val_metric=0.28,test_metric=0.28
+seedFINAL Results/trainset1/squirrel/2/val_loss=6.73,test_loss=6.49,val_metric=0.26,test_metric=0.29
+seedFINAL Results/trainset1/squirrel/3/val_loss=6.68,test_loss=6.89,val_metric=0.27,test_metric=0.28
+seedFINAL Results/trainset1/squirrel/4/val_loss=7.42,test_loss=7.16,val_metric=0.25,test_metric=0.27
+Results/trainset1/squirrel/ train=26.3+-0.99,val=28.05+-0.5
+
+seedFINAL Results/trainset1/cornell/0/val_loss=7.24,test_loss=9.72,val_metric=0.56,test_metric=0.46
+seedFINAL Results/trainset1/cornell/1/val_loss=6.05,test_loss=8.37,val_metric=0.53,test_metric=0.46
+seedFINAL Results/trainset1/cornell/2/val_loss=5.47,test_loss=7.09,val_metric=0.56,test_metric=0.49
+seedFINAL Results/trainset1/cornell/3/val_loss=6.34,test_loss=8.72,val_metric=0.51,test_metric=0.46
+seedFINAL Results/trainset1/cornell/4/val_loss=6.66,test_loss=8.55,val_metric=0.56,test_metric=0.49
+Results/trainset1/cornell/ train=54.24+-2.4,val=47.03+-1.48
+
+seedFINAL Results/trainset1/wisconsin/0/val_loss=6.07,test_loss=7.6,val_metric=0.61,test_metric=0.59
+seedFINAL Results/trainset1/wisconsin/1/val_loss=7.08,test_loss=5.45,val_metric=0.49,test_metric=0.57
+seedFINAL Results/trainset1/wisconsin/2/val_loss=4.99,test_loss=6.34,val_metric=0.56,test_metric=0.55
+seedFINAL Results/trainset1/wisconsin/3/val_loss=7.55,test_loss=5.46,val_metric=0.5,test_metric=0.61
+seedFINAL Results/trainset1/wisconsin/4/val_loss=5.59,test_loss=6.94,val_metric=0.57,test_metric=0.55
+Results/trainset1/wisconsin/ train=54.75+-5.26,val=57.25+-2.56
+
+seedFINAL Results/trainset1/texas/0/val_loss=7.76,test_loss=7.77,val_metric=0.57,test_metric=0.65
+seedFINAL Results/trainset1/texas/1/val_loss=5.64,test_loss=5.84,val_metric=0.59,test_metric=0.57
+seedFINAL Results/trainset1/texas/2/val_loss=5.9,test_loss=6.27,val_metric=0.59,test_metric=0.65
+seedFINAL Results/trainset1/texas/3/val_loss=6.26,test_loss=6.15,val_metric=0.59,test_metric=0.59
+seedFINAL Results/trainset1/texas/4/val_loss=7.2,test_loss=7.33,val_metric=0.59,test_metric=0.65
+Results/trainset1/texas/ train=58.28+-0.77,val=62.16+-3.82
+
+seedFINAL Results/trainset1/full_cora/0/val_loss=2.97,test_loss=2.93,val_metric=0.42,test_metric=0.43
+seedFINAL Results/trainset1/full_cora/1/val_loss=2.9,test_loss=2.89,val_metric=0.44,test_metric=0.45
+seedFINAL Results/trainset1/full_cora/2/val_loss=2.88,test_loss=2.89,val_metric=0.43,test_metric=0.42
+seedFINAL Results/trainset1/full_cora/3/val_loss=2.87,test_loss=2.87,val_metric=0.43,test_metric=0.43
+seedFINAL Results/trainset1/full_cora/4/val_loss=2.9,test_loss=2.92,val_metric=0.44,test_metric=0.43
+Results/trainset1/full_cora/ train=43.0+-0.9,val=43.18+-1.1
+
+seedFINAL Results/trainset1/full_DBLP/0/val_loss=1.52,test_loss=1.52,val_metric=0.41,test_metric=0.41
+seedFINAL Results/trainset1/full_DBLP/1/val_loss=1.62,test_loss=1.63,val_metric=0.41,test_metric=0.4
+seedFINAL Results/trainset1/full_DBLP/2/val_loss=4.49,test_loss=4.43,val_metric=0.37,test_metric=0.38
+seedFINAL Results/trainset1/full_DBLP/3/val_loss=4.1,test_loss=4.07,val_metric=0.36,test_metric=0.37
+seedFINAL Results/trainset1/full_DBLP/4/val_loss=1.38,test_loss=1.39,val_metric=0.43,test_metric=0.43
+Results/trainset1/full_DBLP/ train=39.76+-2.9,val=39.8+-2.64
+
+seedFINAL Results/trainset1/wiki_attr/0/val_loss=2.64,test_loss=2.37,val_metric=0.51,test_metric=0.55
+seedFINAL Results/trainset1/wiki_attr/1/val_loss=2.43,test_loss=2.47,val_metric=0.57,test_metric=0.56
+seedFINAL Results/trainset1/wiki_attr/2/val_loss=2.55,test_loss=2.49,val_metric=0.55,test_metric=0.58
+seedFINAL Results/trainset1/wiki_attr/3/val_loss=2.93,test_loss=2.92,val_metric=0.53,test_metric=0.52
+seedFINAL Results/trainset1/wiki_attr/4/val_loss=2.51,test_loss=2.57,val_metric=0.54,test_metric=0.51
+Results/trainset1/wiki_attr/ train=53.84+-2.03,val=54.44+-2.8
+
+seedFINAL Results/trainset1/blogcatalog/0/val_loss=1.49,test_loss=1.44,val_metric=0.51,test_metric=0.52
+seedFINAL Results/trainset1/blogcatalog/1/val_loss=1.47,test_loss=1.46,val_metric=0.51,test_metric=0.51
+seedFINAL Results/trainset1/blogcatalog/2/val_loss=1.47,test_loss=1.44,val_metric=0.51,test_metric=0.52
+seedFINAL Results/trainset1/blogcatalog/3/val_loss=1.76,test_loss=1.75,val_metric=0.42,test_metric=0.42
+seedFINAL Results/trainset1/blogcatalog/4/val_loss=1.56,test_loss=1.59,val_metric=0.49,test_metric=0.49
+Results/trainset1/blogcatalog/ train=48.72+-3.78,val=49.4+-4.16
+
+seedFINAL Results/trainset1/wiki_cs/0/val_loss=15.57,test_loss=15.73,val_metric=0.23,test_metric=0.23
+seedFINAL Results/trainset1/wiki_cs/1/val_loss=12.7,test_loss=12.8,val_metric=0.23,test_metric=0.23
+seedFINAL Results/trainset1/wiki_cs/2/val_loss=14.17,test_loss=14.32,val_metric=0.23,test_metric=0.23
+seedFINAL Results/trainset1/wiki_cs/3/val_loss=22.91,test_loss=23.01,val_metric=0.23,test_metric=0.23
+seedFINAL Results/trainset1/wiki_cs/4/val_loss=10.71,test_loss=10.82,val_metric=0.25,test_metric=0.25
+Results/trainset1/wiki_cs/ train=23.31+-0.8,val=23.32+-0.78
+
+seedFINAL Results/trainset1/co_cs/0/val_loss=3.94,test_loss=3.94,val_metric=0.31,test_metric=0.3
+seedFINAL Results/trainset1/co_cs/1/val_loss=2.07,test_loss=2.09,val_metric=0.39,test_metric=0.38
+seedFINAL Results/trainset1/co_cs/2/val_loss=3.34,test_loss=3.3,val_metric=0.31,test_metric=0.32
+seedFINAL Results/trainset1/co_cs/3/val_loss=4.62,test_loss=4.66,val_metric=0.28,test_metric=0.27
+seedFINAL Results/trainset1/co_cs/4/val_loss=4.05,test_loss=3.99,val_metric=0.28,test_metric=0.28
+Results/trainset1/co_cs/ train=31.02+-4.47,val=30.92+-4.39
+
+seedFINAL Results/trainset1/co_physics/0/val_loss=2.81,test_loss=2.8,val_metric=0.51,test_metric=0.51
+seedFINAL Results/trainset1/co_physics/1/val_loss=1.75,test_loss=1.74,val_metric=0.31,test_metric=0.31
+seedFINAL Results/trainset1/co_physics/2/val_loss=1.91,test_loss=1.95,val_metric=0.37,test_metric=0.37
+seedFINAL Results/trainset1/co_physics/3/val_loss=3.71,test_loss=3.72,val_metric=0.51,test_metric=0.51
+seedFINAL Results/trainset1/co_physics/4/val_loss=4.17,test_loss=4.19,val_metric=0.5,test_metric=0.5
+Results/trainset1/co_physics/ train=43.87+-9.17,val=43.89+-9.24
+
+seedFINAL Results/trainset1/brazil/0/val_loss=2.38,test_loss=2.61,val_metric=0.32,test_metric=0.23
+seedFINAL Results/trainset1/brazil/1/val_loss=2.28,test_loss=2.26,val_metric=0.16,test_metric=0.23
+seedFINAL Results/trainset1/brazil/2/val_loss=2.33,test_loss=2.28,val_metric=0.16,test_metric=0.27
+seedFINAL Results/trainset1/brazil/3/val_loss=1.87,test_loss=2.22,val_metric=0.28,test_metric=0.31
+seedFINAL Results/trainset1/brazil/4/val_loss=2.5,test_loss=2.13,val_metric=0.24,test_metric=0.23
+Results/trainset1/brazil/ train=23.2+-7.16,val=25.38+-3.44
+
+seedFINAL Results/trainset1/usa/0/val_loss=7.42,test_loss=7.91,val_metric=0.31,test_metric=0.32
+seedFINAL Results/trainset1/usa/1/val_loss=6.11,test_loss=6.28,val_metric=0.38,test_metric=0.35
+seedFINAL Results/trainset1/usa/2/val_loss=7.13,test_loss=7.27,val_metric=0.34,test_metric=0.38
+seedFINAL Results/trainset1/usa/3/val_loss=8.74,test_loss=8.21,val_metric=0.32,test_metric=0.36
+seedFINAL Results/trainset1/usa/4/val_loss=7.69,test_loss=7.65,val_metric=0.32,test_metric=0.32
+Results/trainset1/usa/ train=33.37+-2.55,val=34.52+-2.63
+
+seedFINAL Results/trainset1/europe/0/val_loss=6.71,test_loss=6.67,val_metric=0.25,test_metric=0.25
+seedFINAL Results/trainset1/europe/1/val_loss=6.37,test_loss=6.39,val_metric=0.27,test_metric=0.25
+seedFINAL Results/trainset1/europe/2/val_loss=5.78,test_loss=5.06,val_metric=0.26,test_metric=0.33
+seedFINAL Results/trainset1/europe/3/val_loss=6.53,test_loss=6.24,val_metric=0.28,test_metric=0.29
+seedFINAL Results/trainset1/europe/4/val_loss=5.24,test_loss=4.94,val_metric=0.28,test_metric=0.28
+Results/trainset1/europe/ train=26.79+-1.64,val=28.12+-3.39
+
+seedFINAL Results/trainset1/actor/0/val_loss=8.87,test_loss=8.88,val_metric=0.27,test_metric=0.26
+seedFINAL Results/trainset1/actor/1/val_loss=7.11,test_loss=7.3,val_metric=0.28,test_metric=0.27
+seedFINAL Results/trainset1/actor/2/val_loss=8.39,test_loss=8.35,val_metric=0.27,test_metric=0.26
+seedFINAL Results/trainset1/actor/3/val_loss=9.22,test_loss=9.46,val_metric=0.27,test_metric=0.25
+seedFINAL Results/trainset1/actor/4/val_loss=7.29,test_loss=7.28,val_metric=0.27,test_metric=0.27
+Results/trainset1/actor/ train=27.14+-0.34,val=26.04+-0.55
+
+seedFINAL Results/trainset1/computers/0/val_loss=3.14,test_loss=3.19,val_metric=0.46,test_metric=0.46
+seedFINAL Results/trainset1/computers/1/val_loss=1.77,test_loss=1.76,val_metric=0.59,test_metric=0.59
+seedFINAL Results/trainset1/computers/2/val_loss=2.18,test_loss=2.16,val_metric=0.56,test_metric=0.56
+seedFINAL Results/trainset1/computers/3/val_loss=2.72,test_loss=2.77,val_metric=0.5,test_metric=0.5
+seedFINAL Results/trainset1/computers/4/val_loss=1.97,test_loss=1.98,val_metric=0.52,test_metric=0.52
+Results/trainset1/computers/ train=52.6+-4.84,val=52.5+-5.01
+
+seedFINAL Results/trainset1/photo/0/val_loss=2.05,test_loss=2.08,val_metric=0.59,test_metric=0.58
+seedFINAL Results/trainset1/photo/1/val_loss=1.17,test_loss=1.2,val_metric=0.68,test_metric=0.68
+seedFINAL Results/trainset1/photo/2/val_loss=1.34,test_loss=1.39,val_metric=0.68,test_metric=0.67
+seedFINAL Results/trainset1/photo/3/val_loss=1.95,test_loss=1.97,val_metric=0.57,test_metric=0.56
+seedFINAL Results/trainset1/photo/4/val_loss=1.69,test_loss=1.7,val_metric=0.58,test_metric=0.59
+Results/trainset1/photo/ train=61.96+-5.49,val=61.51+-5.59
+
+[neptune] [info   ] Shutting down background jobs, please wait a moment...
+[neptune] [info   ] Done!
+[neptune] [info   ] Waiting for the remaining 75 operations to synchronize with Neptune. Do not kill this process.
+[neptune] [info   ] All 75 operations synced, thanks for waiting!
+[neptune] [info   ] Explore the metadata in the Neptune app: https://app.neptune.ai/ALLab-Boun/EquivarianceEverywhere-Reproduction/e/EQ-3/metadata
