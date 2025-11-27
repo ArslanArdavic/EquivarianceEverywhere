@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=tsgnn-7-test
-#SBATCH --output=logs/tsgnn-7-test_%j.out
-#SBATCH --error=logs/tsgnn-7-test_%j.err
+#SBATCH --job-name=tsgnn-27-test
+#SBATCH --output=logs/tsgnn-27-test_%j.out
+#SBATCH --error=logs/tsgnn-27-test_%j.err
 #SBATCH --time=24:00:00
 #SBATCH --gpus=1
 #SBATCH --cpus-per-gpu=8
