@@ -45,4 +45,4 @@ python -u main.py \
   --hidden_dim 16 \
   --num_layers 2  \
   --lr 3e-3 \
-  --lp_ratio 0.4 \
+  --lp_ratio 0.6 \
