@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=tsgnn-meta-7
-#SBATCH --output=logs/tsgnn-meta-7_%j.out
-#SBATCH --error=logs/tsgnn-meta-7_%j.err
+#SBATCH --job-name=tsgnn-meta-7-test
+#SBATCH --output=logs/tsgnn-meta-7-test_%j.out
+#SBATCH --error=logs/tsgnn-meta-7-test_%j.err
 #SBATCH --time=24:00:00
 #SBATCH --gpus=1
 #SBATCH --cpus-per-gpu=8
@@ -39,7 +39,6 @@ python -m pip install --no-cache-dir ogb
 
 python -u main.py \
   --project ALLab-Boun/EquivarianceEverywhere-Reproduction\
-  --is_train \
   --train_test_setup inc_trainset \
   --train_size 7 \
   --gnn_type MEAN_GNN \
