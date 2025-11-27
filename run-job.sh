@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=tsgnn-test
-#SBATCH --output=logs/tsgnn-test_%j.out
-#SBATCH --error=logs/tsgnn-test_%j.err
+#SBATCH --job-name=tsgnn-7
+#SBATCH --output=logs/tsgnn-7_%j.out
+#SBATCH --error=logs/tsgnn-7_%j.err
 #SBATCH --time=24:00:00
 #SBATCH --gpus=1
 #SBATCH --cpus-per-gpu=8
@@ -28,11 +28,21 @@ chmod 700 "$TRITON_CACHE_DIR" "$TORCHINDUCTOR_CACHE_DIR" "$XDG_CACHE_HOME"
 python -m pip install --no-cache-dir ogb 
 
 # Run your training
+#python -u main.py \
+#  --project ALLab-Boun/EquivarianceEverywhere-Reproduction\
+#  --train_test_setup trainset1 \
+#  --gnn_type MEAN_GNN \
+#  --num_layers 2 \
+#  --lp_ratio 0.4 \
+#  --max_epochs 2000 \
+#  --lr 0.01
+
 python -u main.py \
-  --project ALLab-Boun/EquivarianceEverywhere-Reproduction\
-  --train_test_setup trainset1 \
+  --is_train \
+  --train_test_setup inc_trainset \
+  --train_size 7 \
   --gnn_type MEAN_GNN \
-  --num_layers 2 \
+  --hidden_dim 16 \
+  --num_layers 2  \
+  --lr 3e-3 \
   --lp_ratio 0.4 \
-  --max_epochs 2000 \
-  --lr 0.01
