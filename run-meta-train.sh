@@ -3,9 +3,9 @@
 #SBATCH --output=logs/tsgnn-meta-27_%j.out
 #SBATCH --error=logs/tsgnn-meta-27_%j.err
 #SBATCH --time=24:00:00
-#SBATCH --gpus=2
-#SBATCH --cpus-per-gpu=8
-#SBATCH --mem-per-gpu=40G
+#SBATCH --gpus=1
+#SBATCH --cpus-per-gpu=16
+#SBATCH --mem-per-gpu=80G
 #SBATCH --container-image ghcr.io\#arslanardavic/equivarianceeverywhere
 
 set -euo pipefail
