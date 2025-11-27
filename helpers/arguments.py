@@ -33,10 +33,10 @@ def parse_arguments():
         required=False,
     )
     parser.add_argument("--lr", dest="lr", default=1e-3, type=float, required=False)
-    parser.add_argument("--meta_learn", dest="meta_learn", default=False, action='store_true', required=False)
-    parser.add_argument("--meta_inner_lr", dest="meta_inner_lr", default=1e-2, type=float, required=False)
-    parser.add_argument("--meta_inner_steps", dest="meta_inner_steps", default=1, type=int, required=False)
-    parser.add_argument("--meta_batch_size", dest="meta_batch_size", default=0, type=int, required=False)
+    #parser.add_argument("--meta_learn", dest="meta_learn", default=False, action='store_true', required=False)
+    #parser.add_argument("--meta_inner_lr", dest="meta_inner_lr", default=1e-2, type=float, required=False)
+    #parser.add_argument("--meta_inner_steps", dest="meta_inner_steps", default=1, type=int, required=False)
+    #parser.add_argument("--meta_batch_size", dest="meta_batch_size", default=0, type=int, required=False)
 
     # gpu
     parser.add_argument('--gpu', dest="gpu", type=int, required=False)
