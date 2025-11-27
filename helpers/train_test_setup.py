@@ -10,7 +10,7 @@ TRAIN_MULTISETS = [
         [DataSet.photo, DataSet.texas, DataSet.roman_empire, DataSet.tolokers],
         [DataSet.photo, DataSet.texas, DataSet.usa, DataSet.actor, DataSet.roman_empire, DataSet.tolokers],
         [DataSet.computers, DataSet.photo, DataSet.texas, DataSet.usa, DataSet.europe, DataSet.actor, DataSet.roman_empire, DataSet.tolokers],
-        [DataSet.roman_empire, DataSet.amazon_ratings, DataSet.minesweeper, DataSet.tolokers, DataSet.questions, DataSet.pubmed, DataSet.citeseer, DataSet.chameleon, DataSet.squirrel, DataSet.cornell, DataSet.wisconsin, DataSet.texas, DataSet.full_cora, DataSet.full_DBLP, DataSet.wiki_attr, DataSet.blogcatalog, DataSet.wiki_cs, DataSet.co_cs, DataSet.co_physics, DataSet.usa, DataSet.europe, DataSet.actor, DataSet.computers, DataSet.photo, DataSet.deezer, DataSet.arxiv],
+        [DataSet.roman_empire, DataSet.amazon_ratings, DataSet.minesweeper, DataSet.tolokers, DataSet.questions, DataSet.pubmed, DataSet.citeseer, DataSet.chameleon, DataSet.squirrel, DataSet.cornell, DataSet.wisconsin, DataSet.texas, DataSet.full_cora, DataSet.full_DBLP, DataSet.wiki_attr, DataSet.blogcatalog, DataSet.wiki_cs, DataSet.co_cs, DataSet.co_physics, DataSet.usa, DataSet.europe, DataSet.actor, DataSet.computers, DataSet.photo, DataSet.arxiv],
     ]
 
 
