@@ -40,7 +40,7 @@ python -m pip install --no-cache-dir ogb
 python -u main.py \
   --project ALLab-Boun/EquivarianceEverywhere-Reproduction\
   --train_test_setup inc_trainset \
-  --train_size 7 \
+  --train_size 27 \
   --gnn_type MEAN_GNN \
   --num_layers 2  \
   --lr 3e-3 \

@@ -10,6 +10,7 @@ TRAIN_MULTISETS = [
         [DataSet.photo, DataSet.texas, DataSet.roman_empire, DataSet.tolokers],
         [DataSet.photo, DataSet.texas, DataSet.usa, DataSet.actor, DataSet.roman_empire, DataSet.tolokers],
         [DataSet.computers, DataSet.photo, DataSet.texas, DataSet.usa, DataSet.europe, DataSet.actor, DataSet.roman_empire, DataSet.tolokers],
+        [DataSet.roman_empire, DataSet.amazon_ratings, DataSet.minesweeper, DataSet.tolokers, DataSet.questions, DataSet.pubmed, DataSet.citeseer, DataSet.chameleon, DataSet.squirrel, DataSet.cornell, DataSet.wisconsin, DataSet.texas, DataSet.full_cora, DataSet.full_DBLP, DataSet.wiki_attr, DataSet.blogcatalog, DataSet.wiki_cs, DataSet.co_cs, DataSet.co_physics, DataSet.usa, DataSet.europe, DataSet.actor, DataSet.computers, DataSet.photo, DataSet.deezer, DataSet.arxiv],
     ]
 
 
@@ -30,8 +31,10 @@ class TrainTestSetup(Enum):
         if self is TrainTestSetup.trainset1:
             return [DataSet.cora]
 
-        assert train_size in [1, 3, 5, 7, 9], "Invalid train size"
+        assert train_size in [1, 3, 5, 7, 9, 27], "Invalid train size"
         train_idx = math.floor(train_size/2)
+        if train_size == 27:
+            train_idx = 5
         trainset_list = [DataSet.cora] + TRAIN_MULTISETS[train_idx]
         return sorted(trainset_list, key=lambda x: x.value)
 
