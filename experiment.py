@@ -1,5 +1,7 @@
 import copy
+from collections import OrderedDict
 from argparse import Namespace
+import random
 import torch
 import sys
 import tqdm
@@ -11,6 +13,7 @@ import os.path as osp
 import os
 from torch import Tensor
 from enum import Enum
+from torch.func import functional_call
 
 from helpers.constants import ROOT_DIR, SEEDS, TASK_LOSS
 from helpers.utils import set_seed, coo_to_csr, str_print, accuracy
@@ -177,11 +180,12 @@ class Experiment(object):
 
     def trainer(self, data_list: List[Data], model, seed: int, optimizer, pbar) -> Tuple[LossAndMetric, Any]:
         loader = DataLoader(data_list, batch_size=1, shuffle=True)
+        train_step = self.maml_train if getattr(self, "meta_learn", False) and len(data_list) > 1 else self.train
 
         losses_n_metric = None
         for epoch in range(self.max_epochs):
             torch.cuda.empty_cache()
-            self.train(loader=loader, model=model, optimizer=optimizer)
+            train_step(loader=loader, model=model, optimizer=optimizer)
             val_loss, val_metric = self.test(loader=loader, model=model, mask_str='val')
             test_loss, test_metric = self.test(loader=loader, model=model, mask_str='test')
 
@@ -214,6 +218,70 @@ class Experiment(object):
             pbar.update(n=1)
 
         return losses_n_metric, model.cpu().state_dict()
+
+    def _functional_forward(self, model, params: OrderedDict, data: Data, is_batch: bool):
+        train_y = copy.deepcopy(data.y_mat)
+        train_y[~data.train_mask] = 0
+        return functional_call(
+            model,
+            params,
+            (
+                data.x,
+                train_y,
+                data.xy_conversions,
+                is_batch,
+                self.device,
+                data.edge_index,
+                data.rowptr,
+                data.indices,
+            ),
+        )
+
+    def _maml_support_loss(self, model, params: OrderedDict, data: Data) -> Tensor:
+        scores, gt_mask = self._functional_forward(model=model, params=params, data=data, is_batch=True)
+        gt_mask = gt_mask.to(device=self.device)
+        return TASK_LOSS(scores[gt_mask], data.y.to(device=self.device)[gt_mask])
+
+    def _maml_query_loss(self, model, params: OrderedDict, data: Data) -> Tensor:
+        scores, _ = self._functional_forward(model=model, params=params, data=data, is_batch=False)
+        val_mask = data.val_mask.to(device=self.device)
+        return TASK_LOSS(scores[val_mask], data.y.to(device=self.device)[val_mask])
+
+    def maml_train(self, loader, model, optimizer):
+        model.train()
+        tasks = list(loader)
+        if len(tasks) == 0:
+            return
+
+        task_limit = getattr(self, "meta_batch_size", 0)
+        if task_limit and task_limit > 0:
+            random.shuffle(tasks)
+            tasks = tasks[:task_limit]
+
+        base_params = OrderedDict(model.named_parameters())
+        meta_loss = 0.0
+        for task_data in tasks:
+            adapted_params = base_params
+            for _ in range(getattr(self, "meta_inner_steps", 1)):
+                support_loss = self._maml_support_loss(model=model, params=adapted_params, data=task_data)
+                grads = torch.autograd.grad(
+                    support_loss,
+                    adapted_params.values(),
+                    create_graph=True,
+                    allow_unused=True,
+                )
+                adapted_params = OrderedDict(
+                    (name, param - self.meta_inner_lr * (grad if grad is not None else torch.zeros_like(param)))
+                    for (name, param), grad in zip(adapted_params.items(), grads)
+                )
+
+            query_loss = self._maml_query_loss(model=model, params=adapted_params, data=task_data)
+            meta_loss = meta_loss + query_loss
+
+        meta_loss = meta_loss / len(tasks)
+        optimizer.zero_grad()
+        meta_loss.backward()
+        optimizer.step()
 
     def train(self, loader, model, optimizer):
         model.train()
