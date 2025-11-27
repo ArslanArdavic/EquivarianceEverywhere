@@ -45,6 +45,6 @@ python -u main.py \
   --num_layers 2  \
   --lr 3e-3 \
   --meta_learn \
-  --meta_inner_lr 1e-2 \
+  --meta_inner_lr 3e-3 \
   --meta_inner_steps 1 \
   --lp_ratio 0.6 \
