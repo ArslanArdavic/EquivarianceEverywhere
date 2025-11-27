@@ -43,7 +43,6 @@ python -u main.py \
   --train_test_setup inc_trainset \
   --train_size 7 \
   --gnn_type MEAN_GNN \
-  --hidden_dim 16 \
   --num_layers 2  \
   --lr 3e-3 \
   --lp_ratio 0.6 \
